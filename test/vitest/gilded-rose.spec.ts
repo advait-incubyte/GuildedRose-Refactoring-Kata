@@ -80,4 +80,11 @@ describe('Gilded Rose: Everyday, it:', () => {
     const updatedItems = gildedRose.updateQuality();
     expect(updatedItems[0].quality).toBe(80);
   })
+
+  it('should decrease quality of Conjured items twice as fast (by 2) as normal items', () => {
+    const items: Item[] = [new Item('Conjured Mana Cake', 1, 10)];
+    const gildedRose = new GildedRose(items);
+    const updatedItems = gildedRose.updateQuality();
+    expect(updatedItems[0].quality).toBe(8);
+  })
 });

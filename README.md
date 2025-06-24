@@ -49,3 +49,4 @@ npx ts-node test/golden-master-text-test.ts 10
     - Reduced nesting by one level by using the `Math.min` function to ensure the quality is not greater than 50
     - Using a `for...of` loop for cleaner, more readable code
     - Converted the logic to a switch case for better readability
+- Added failing test case for Conjured items
