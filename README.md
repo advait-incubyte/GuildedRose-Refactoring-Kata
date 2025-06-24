@@ -44,3 +44,4 @@ npx ts-node test/golden-master-text-test.ts 10
 - Added test cases as per requirements of the kata, that already pass because the function works expected
 - Refactors begin:
     - More idiomatic type definitions
+    - This line (57 during this commit) basically means 0
