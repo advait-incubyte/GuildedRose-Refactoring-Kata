@@ -18,44 +18,38 @@ export class GildedRose {
   }
 
   updateQuality() {
-    const exceptionalItems = ['Aged Brie', 'Backstage passes to a TAFKAL80ETC concert', 'Sulfuras, Hand of Ragnaros'];
-
     for (const item of this.items) {
-      if (!exceptionalItems.includes(item.name)) {
-        if (item.quality > 0) {
-          item.quality = item.quality - 1
-        }
-      } else {
-        if (item.quality < 50) {
-          item.quality = item.quality + 1
-          if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
-            if (item.sellIn < 11) {
-              item.quality = Math.min(item.quality + 1, 50)
-            }
-            if (item.sellIn < 6) {
-              item.quality = Math.min(item.quality + 1, 50)
-            }
-          }
-        }
-      }
-      if (item.name != 'Sulfuras, Hand of Ragnaros') {
-        item.sellIn = item.sellIn - 1;
-      }
-      if (item.sellIn < 0) {
-        if (item.name != 'Aged Brie') {
-          if (item.name != 'Backstage passes to a TAFKAL80ETC concert' 
-            && item.name != 'Sulfuras, Hand of Ragnaros') {
-              if (item.quality > 0) {
-                item.quality = item.quality - 1
-              }
-          } else {
+      switch (item.name) {
+        case 'Sulfuras, Hand of Ragnaros':
+          break
+
+        case 'Aged Brie':
+          item.sellIn -= 1
+          item.quality += (item.sellIn < 0 ? 2 : 1)
+          item.quality = Math.min(item.quality, 50)
+          break
+
+        case 'Backstage passes to a TAFKAL80ETC concert':
+          item.sellIn -= 1
+
+          if (item.sellIn < 0) {
             item.quality = 0
+          } else {
+            item.quality += 1
+            if (item.sellIn <= 10)
+              item.quality += 1
+            if (item.sellIn <= 5)
+              item.quality += 1 
+
+            item.quality = Math.min(item.quality, 50)
           }
-        } else {
-          if (item.quality < 50) {
-            item.quality = item.quality + 1
-          }
-        }
+          break
+
+        default:
+          item.sellIn -= 1
+          item.quality -= (item.sellIn < 0 ? 2 : 1)
+          item.quality = Math.max(item.quality, 0)
+          break
       }
     }
 
