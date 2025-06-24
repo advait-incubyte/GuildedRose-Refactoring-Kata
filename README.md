@@ -47,3 +47,4 @@ npx ts-node test/golden-master-text-test.ts 10
     - This line (57 during this commit) basically means 0
     - Reduced nesting by one level by using the `exceptionalItems` array to check if the item is exception case
     - Reduced nesting by one level by using the `Math.min` function to ensure the quality is not greater than 50
+    - Using a `for...of` loop for cleaner, more readable code
