@@ -37,7 +37,7 @@ describe('Gilded Rose: Everyday, it:', () => {
   })
 
   it('should increase quality of Backstage passes by 1 if there are more than 10 days left to sell', () => {
-    const items: Item[] = [new Item('Backstage passes to a TAFKAL80ETC concert', 11, 10)];
+    const items: Item[] = [new Item('Backstage passes to a TAFKAL80ETC concert', 12, 10)];
     const gildedRose = new GildedRose(items);
     const updatedItems = gildedRose.updateQuality();
     expect(updatedItems[0].quality).toBe(11);
