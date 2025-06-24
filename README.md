@@ -42,3 +42,5 @@ npx ts-node test/golden-master-text-test.ts 10
 ## Steps performed:
 - Initital repo setup
 - Added test cases as per requirements of the kata, that already pass because the function works expected
+- Refactors begin:
+    - More idiomatic type definitions
