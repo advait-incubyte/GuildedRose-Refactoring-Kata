@@ -32,12 +32,20 @@ export class GildedRose {
           break;
 
         default:
-          this._updateQualityOfNormalItem(item)
+          if (item.name.includes('Conjured'))
+            this._updateQualityOfConjuredItem(item)
+          else
+            this._updateQualityOfNormalItem(item)
           break;
       }
     }
   
     return this.items;
+  }
+
+  private _updateQualityOfConjuredItem(item: Item) {
+    item.sellIn -= 1
+    item.quality = Math.max(item.quality - 2, 0)
   }
 
   private _updateQualityOfNormalItem(item: Item) {
